@@ -1,0 +1,11 @@
+set number
+set relativenumber
+
+Plug 'machakann/vim-highlightedyank'
+set incsearch
+
+set hlsearch
+set surround
+set commentary # quick toggle for commenting code: gc in visual mode or gcc for current line
+set scrolloff=5
+
