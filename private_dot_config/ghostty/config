@@ -1,0 +1,38 @@
+# ---- Gruvbox dark colours ----------------------------------
+theme = GruvboxDark
+# theme = catppuccin-mocha
+
+# ---- Background transparency -------------------------------
+background-opacity = 0.95
+background-blur = true
+background-blur-radius = 10
+
+# ---- Font settings -----------------------------------------
+#font-family          = DankMono Nerd Font
+font-family          = JetBrainsMono NF
+font-size            = 14
+alpha-blending       = linear
+bold-is-bright       = true
+
+# ---- Clipboard settings -------------------------------------
+copy-on-select = true
+clipboard-trim-trailing-spaces = true
+
+# ---- Mouse settings ---------------------------------------
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+# ---- Window settings ----------------------------------------
+window-padding-x  = 8
+window-padding-y  = 4
+window-padding-balance = true
+title = " "
+macos-titlebar-proxy-icon = hidden
+gtk-tabs-location = bottom
+window-vsync      = true
+macos-titlebar-style = transparent
+window-save-state = always
+macos-titlebar-style = hidden
+
+auto-update = download
+auto-update-channel = tip
