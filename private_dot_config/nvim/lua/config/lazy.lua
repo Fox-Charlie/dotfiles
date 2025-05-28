@@ -32,7 +32,7 @@ require("lazy").setup({
   { "nvim-lualine/lualine.nvim",  config = function() require("plugins.ui").lualine() end },
   { "windwp/nvim-autopairs",      config = true },
   -- { "folke/which-key.nvim",       config = true },
-  -- { "goolord/alpha-nvim",         config = true, event = "VimEnter" },
+  { "goolord/alpha-nvim",         config = function() require("plugins.alpha").setup() end, event = "VimEnter" },
 
   -- Treesitter --------------------------------------------------------------
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = function()
@@ -64,8 +64,8 @@ require("lazy").setup({
   -- Others / misc -----------------------------------------------------------
   -- { "ThePrimeagen/harpoon",       branch = "harpoon2", config = true },
   -- { "numToStr/Comment.nvim",      config = true },
-  -- { "folke/trouble.nvim",         config = true },
-  -- { "nvim-pack/nvim-spectre",     cmd = "Spectre" },
+  { "folke/trouble.nvim",         config = true },
+  { "nvim-pack/nvim-spectre",     cmd = "Spectre" },
 
   -- Colour Scheme
   -- { "folke/tokyonight.nvim",      lazy = false, priority = 1000 }, -- colorscheme
