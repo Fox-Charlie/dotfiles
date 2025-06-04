@@ -106,3 +106,5 @@ setopt HIST_FIND_NO_DUPS HIST_SAVE_NO_DUPS HIST_REDUCE_BLANKS
 eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
+
+alias marta='open -a "Marta"'
