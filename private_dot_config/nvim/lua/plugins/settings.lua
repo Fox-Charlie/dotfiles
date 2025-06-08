@@ -27,3 +27,13 @@ vim.opt.clipboard = "unnamedplus" -- Use system clipboard
 vim.cmd("syntax on")              -- Enable syntax highlighting
 vim.cmd("filetype plugin indent on") -- Enable filetype-based plugins and indenting
 
+-- Highlighting on yank (flash)
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "DiffAdd", -- Or "Search" or any other highlight group
+      timeout = 150,         -- milliseconds
+    })
+  end,
+})
