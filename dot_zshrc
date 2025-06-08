@@ -113,9 +113,13 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 alias marta='open -a "Marta"'
 
+### coloured man pages
+source .zsh/color_man.zsh
+
 # Set nvim as editor if available, otherwise use vim
 if command -v nvim &> /dev/null; then
   export EDITOR="nvim"
 elif command -v vim &> /dev/null; then
   export EDITOR="vim"
 fi
+
