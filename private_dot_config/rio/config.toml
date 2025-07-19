@@ -1,0 +1,38 @@
+# --- Theme --------------------------------------------------
+theme = "gruvbox-dark"
+
+# --- Bold uses bright ------
+draw-bold-text-with-light-colors = true
+
+# --- Hide mouse while typing -------------------------------
+hide-mouse-cursor-when-typing = true
+
+# --- Root padding (Ghostty window-padding-x / -y) -----------
+padding-x = 8
+padding-y = [4, 4]
+
+# --- Fonts (Ghostty font-family / font-size) ----------------
+[fonts]
+size = 14
+family = "JetBrainsMono NF"
+
+# --- Scrolling (Ghostty mouse-scroll-multiplier = 2) --------
+[scroll]
+multiplier = 2.0
+divider    = 1.0            # Default; kept explicit for clarity
+
+# --- Window appearance (Ghostty background / blur) ----------
+[window]
+opacity      = 0.95
+blur         = true
+decorations  = "Disabled"
+macos-use-shadow = true
+
+# --- Renderer / performance (Ghostty window-vsync=true) -----
+[renderer]
+performance = "High"
+
+# --- Title (Ghostty title = " ") ----------------------------
+[title]
+content     = ""
+placeholder = ""

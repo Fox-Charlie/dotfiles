@@ -1,0 +1,28 @@
+[colors]
+# Core palette
+background = '#282828'
+foreground = '#ebdbb2'
+cursor     = '#ebdbb2'
+
+black   = '#282828'
+red     = '#cc241d'
+green   = '#98971a'
+yellow  = '#d79921'
+blue    = '#458588'
+magenta = '#b16286'
+cyan    = '#689d6a'
+white   = '#a89984'
+
+# Bright (light-) variants (Rio uses the "light-" prefix like the Dracula example)
+light-black   = '#928374'
+light-red     = '#fb4934'
+light-green   = '#b8bb26'
+light-yellow  = '#fabd2f'
+light-blue    = '#83a598'
+light-magenta = '#d3869b'
+light-cyan    = '#8ec07c'
+light-white   = '#ebdbb2'
+
+# Tab bar accents (tweak to taste)
+tabs        = '#3c3836'
+tabs-active = '#504945'
