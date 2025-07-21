@@ -5,7 +5,7 @@ theme = "gruvbox-dark"
 draw-bold-text-with-light-colors = true
 
 # --- Hide mouse while typing -------------------------------
-hide-mouse-cursor-when-typing = true
+hide-mouse-cursor-when-typing = false
 
 # --- Root padding (Ghostty window-padding-x / -y) -----------
 padding-x = 8
