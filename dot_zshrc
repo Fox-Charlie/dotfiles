@@ -30,9 +30,8 @@ unset __conda_setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Add pycharm to path for `charm` command
-export PATH="/Applications/PyCharm CE.app/Contents/MacOS:$PATH"
-alias charm="pycharm"
+# Add `charm` command
+alias charm='open -na "PyCharm CE.app" --args "$@"'
 
 # Add cargo to path for rust binaries
 export PATH="/Users/charlie/.cargo/bin:$PATH"
