@@ -47,9 +47,12 @@ require("lazy").setup({
   },
 
   -- LSP / Completion --------------------------------------------------------
-  { "neovim/nvim-lspconfig",      dependencies = { "cmp-nvim-lsp" } },
-  { "williamboman/mason.nvim",    config = true },
-  { "williamboman/mason-lspconfig.nvim", config = true },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
+  { "neovim/nvim-lspconfig",
+    dependencies = { "cmp-nvim-lsp", "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
+    config = function() require("plugins.lsp") end
+  },
   { "hrsh7th/nvim-cmp",           config = function() require("plugins.cmp").setup() end },
   "hrsh7th/cmp-nvim-lsp",
   "L3MON4D3/LuaSnip",
@@ -69,7 +72,7 @@ require("lazy").setup({
 
   -- Colour Scheme
   -- { "folke/tokyonight.nvim",      lazy = false, priority = 1000 }, -- colorscheme
-    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...}
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = {} }
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
