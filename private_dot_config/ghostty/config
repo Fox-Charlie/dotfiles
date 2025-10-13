@@ -1,5 +1,5 @@
 # ---- Gruvbox dark colours ----------------------------------
-theme = GruvboxDark
+theme = Gruvbox Dark
 # theme = catppuccin-mocha
 
 # ---- Background transparency -------------------------------
@@ -8,8 +8,8 @@ background-blur = true
 background-blur-radius = 10
 
 # ---- Font settings -----------------------------------------
-#font-family          = DankMono Nerd Font
-font-family          = JetBrainsMono NF
+font-family          = DankMono Nerd Font
+#font-family          = JetBrainsMono NF
 font-size            = 14
 alpha-blending       = linear
 bold-is-bright       = true
