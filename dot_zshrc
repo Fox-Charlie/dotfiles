@@ -30,11 +30,14 @@ unset __conda_setup
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+# Rust / Cargo
+. "$HOME/.cargo/env"
+
+# Ruby version manager
+eval "$(rbenv init - zsh)"
+
 # Add `charm` command
 alias charm='open -na "PyCharm CE.app" --args "$@"'
-
-# Add cargo to path for rust binaries
-export PATH="/Users/charlie/.cargo/bin:$PATH"
 
 ###############################################################################
 # Customizations and plugins

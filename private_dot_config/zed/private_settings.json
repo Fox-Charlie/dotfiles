@@ -61,7 +61,7 @@
   "base_keymap": "JetBrains",
   "ui_font_size": 14,
   "buffer_font_size": 13.0,
-  "theme": "Gruvbox Dark",
+  "theme": "Gruvbox Dark Hard",
 
   "experimental.theme_overrides": {
     "background.appearance": "blurred",
@@ -85,8 +85,8 @@
     "editor.indent_guide_active": "#928374e0", // gruvbox grey @ less transparent
 
     // borders
-    "border": "#665c5440", // dark3 + alpha
-    "border.variant": "#665c5420", // dark3 + weaker alpha
+    "border": "#665c5480", // dark3 + alpha
+    "border.variant": "#665c5450", // dark3 + weaker alpha
 
     "hint.background": "#3c3836cc", // dark1 + alpha
 
