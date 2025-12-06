@@ -1,18 +1,49 @@
-require("plugins.settings")
--- require("plugins.colourscheme")
+-- 
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+vim.g.have_nerg_font = " "
 
+-- Basic settings
+vim.opt.compatible = false
+vim.opt.showmatch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.mouse = "a"
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+-- Tabs and indentation
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+
+-- UI enhancements
+vim.opt.relativenumber = true
+vim.opt.wildmode = { "longest", "list" }
+vim.opt.colorcolumn = "120"
+vim.opt.cursorline = true
+vim.opt.ttyfast = true
+vim.opt.clipboard = "unnamedplus"
+
+-- File type and syntax
+vim.cmd("syntax on")
+vim.cmd("filetype plugin indent on")
+
+-- Highlight on yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank({ higroup = "DiffAdd", timeout = 150 })
+	end,
+})
+
+-- Load plugin manager
 require("config.lazy")
 
--- gruvbox colour scheme
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
+-- Load colorscheme
+require("plugins.colourscheme")
 
--- transparent background
-vim.cmd [[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
-  highlight Normal ctermbg=none
-  highlight NonText ctermbg=none
-]]
-
-
+-- Load keymaps
+require("config.keymaps")

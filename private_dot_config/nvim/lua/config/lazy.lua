@@ -15,72 +15,55 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+-- Leader keys
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-      --   -- Core libraries -----------------------------------------------------------
-  "nvim-lua/plenary.nvim",
-  { "nvim-tree/nvim-web-devicons", lazy = true },  -- icons for many plugins
+    -- Core libraries
+    "nvim-lua/plenary.nvim",
+    { "nvim-tree/nvim-web-devicons", lazy = true },
 
-  -- UI ----------------------------------------------------------------------
-  { "nvim-lualine/lualine.nvim",  config = function() require("plugins.ui").lualine() end },
-  { "windwp/nvim-autopairs",      config = true },
-  -- { "folke/which-key.nvim",       config = true },
-  { "goolord/alpha-nvim",         config = function() require("plugins.alpha").setup() end, event = "VimEnter" },
+    -- UI
+    { "folke/snacks.nvim", priority = 1000, lazy = false, config = function() require("plugins.snacks") end },
+    { "nvim-lualine/lualine.nvim", config = function() require("plugins.ui") end },
+    { "windwp/nvim-autopairs", config = true },
+    -- { "folke/which-key.nvim", config = true },
 
-  -- Treesitter --------------------------------------------------------------
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = function()
-      require("plugins.treesitter").setup()
-    end
+    -- Treesitter
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = function() require("plugins.treesitter") end },
+
+    -- Telescope
+    { "nvim-telescope/telescope.nvim", dependencies = { "plenary.nvim" }, config = function() require("plugins.telescope") end },
+
+    -- LSP / Completion
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
+    { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+    { "neovim/nvim-lspconfig", dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "WhoIsSethDaniel/mason-tool-installer.nvim" }, config = function() require("plugins.lsp") end },
+    { "saghen/blink.cmp", version = "1.*", dependencies = { "rafamadriz/friendly-snippets" }, config = function() require("plugins.cmp") end },
+
+    -- Formatting & Linting
+    { "stevearc/conform.nvim", event = { "BufReadPre", "BufNewFile" }, config = function() require("plugins.conform") end },
+    { "mfussenegger/nvim-lint", event = { "BufReadPre", "BufNewFile" }, config = function() require("plugins.lint") end },
+
+    -- Git
+    { "lewis6991/gitsigns.nvim", config = function() require("plugins.git") end },
+    -- "tpope/vim-fugitive",
+    -- { "sindrets/diffview.nvim", cmd = { "DiffviewOpen" } },
+
+    -- Misc
+    -- { "ThePrimeagen/harpoon", branch = "harpoon2", config = true },
+    { "echasnovski/mini.nvim", config = function() require("plugins.mini") end },
+    { "folke/trouble.nvim", config = true },
+    { "nvim-pack/nvim-spectre", cmd = "Spectre" },
+
+    -- Colorscheme
+    -- { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+    { "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
   },
-
-  -- Telescope ---------------------------------------------------------------
-  { "nvim-telescope/telescope.nvim",
-    dependencies = { "plenary.nvim" },
-    config = function() require("plugins.telescope").setup() end
-  },
-
-  -- LSP / Completion --------------------------------------------------------
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
-  { "neovim/nvim-lspconfig",
-    dependencies = { "cmp-nvim-lsp", "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
-    config = function() require("plugins.lsp") end
-  },
-  { "hrsh7th/nvim-cmp",           config = function() require("plugins.cmp").setup() end },
-  "hrsh7th/cmp-nvim-lsp",
-  "L3MON4D3/LuaSnip",
-  "saadparwaiz1/cmp_luasnip",
-  { "nvimtools/none-ls.nvim",     config = true }, -- formatters & linters
-
-  -- Git ---------------------------------------------------------------------
-  { "lewis6991/gitsigns.nvim",    config = function() require("plugins.git").gitsigns() end },
-  -- "tpope/vim-fugitive",
-  -- { "sindrets/diffview.nvim",     cmd = { "DiffviewOpen" } },
-
-  -- Others / misc -----------------------------------------------------------
-  -- { "ThePrimeagen/harpoon",       branch = "harpoon2", config = true },
-  -- { "numToStr/Comment.nvim",      config = true },
-  { "folke/trouble.nvim",         config = true },
-  { "nvim-pack/nvim-spectre",     cmd = "Spectre" },
-
-  -- Colour Scheme
-  -- { "folke/tokyonight.nvim",      lazy = false, priority = 1000 }, -- colorscheme
-    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = {} }
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
-  checker = {
-        enabled = true,
-        notify = false,
-    },
-
+  checker = { enabled = true, notify = false },
 })

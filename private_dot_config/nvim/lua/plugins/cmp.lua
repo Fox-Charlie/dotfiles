@@ -1,20 +1,24 @@
-local M = {}
-
-function M.setup()
-  local cmp = require("cmp")
-  local luasnip = require("luasnip")
-  cmp.setup({
-    snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
-    mapping = cmp.mapping.preset.insert({
-      ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-    }),
-    sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip"   },
-      { name = "buffer"    },
-      { name = "path"      },
+require("blink.cmp").setup({
+    keymap = {
+        preset = "default",
+        ["<Tab>"] = { "select_and_accept", "fallback" },
     },
-  })
-end
-
-return M
+    appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
+    },
+    sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+    },
+    completion = {
+        menu = {
+            draw = {
+                treesitter = { "lsp" },
+            },
+        },
+        documentation = {
+            auto_show = true,
+            auto_show_delay_ms = 200,
+        },
+    },
+})
