@@ -1,3 +1,11 @@
+-- Neotree
+vim.keymap.set("n", "<leader>n", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer", silent = true, nowait = true })
+
+-- Dashboard
+vim.keymap.set("n", "<leader>sd", function()
+	Snacks.dashboard()
+end, { desc = "Open dashboard" })
+
 -- Telescope keymaps
 local telescope_builtin = require("telescope.builtin")
 

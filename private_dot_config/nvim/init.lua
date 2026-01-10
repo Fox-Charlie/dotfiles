@@ -1,8 +1,3 @@
--- 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-vim.g.have_nerg_font = " "
-
 -- Basic settings
 vim.opt.compatible = false
 vim.opt.showmatch = true
@@ -21,6 +16,7 @@ vim.opt.autoindent = true
 
 -- UI enhancements
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.wildmode = { "longest", "list" }
 vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true

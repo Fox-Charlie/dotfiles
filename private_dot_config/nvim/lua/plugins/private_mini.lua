@@ -7,15 +7,24 @@ require("mini.ai").setup({
 -- mini.surround - Fast surround actions
 require("mini.surround").setup({
   mappings = {
-    add = "sa",            -- Add surrounding in Normal and Visual modes
-    delete = "sd",         -- Delete surrounding
-    find = "sf",           -- Find surrounding (to the right)
-    find_left = "sF",      -- Find surrounding (to the left)
-    highlight = "sh",      -- Highlight surrounding
-    replace = "sr",        -- Replace surrounding
-    update_n_lines = "sn", -- Update `n_lines`
+    add = "ys",
+    delete = "ds",
+    find = "",
+    find_left = "",
+    highlight = "",
+    replace = "cs",
+    update_n_lines = "",
+    suffix_last = "",
+    suffix_next = "",
   },
   n_lines = 20,
+  search_method = "cover_or_next",
+  custom_surroundings = {
+    ["("] = { output = { left = "(", right = ")" } },
+    ["["] = { output = { left = "[", right = "]" } },
+    ["{"] = { output = { left = "{", right = "}" } },
+    ["<"] = { output = { left = "<", right = ">" } },
+  },
 })
 
 -- mini.comment - Comment code
