@@ -1,5 +1,10 @@
 -- Neotree
-vim.keymap.set("n", "<leader>n", "<cmd>Neotree toggle<CR>", { desc = "Toggle file explorer", silent = true, nowait = true })
+vim.keymap.set(
+	"n",
+	"<leader>n",
+	"<cmd>Neotree toggle<CR>",
+	{ desc = "Toggle file explorer", silent = true, nowait = true }
+)
 
 -- Dashboard
 vim.keymap.set("n", "<leader>sd", function()
@@ -17,21 +22,14 @@ vim.keymap.set("n", "<leader>fo", telescope_builtin.oldfiles, { desc = "Recent f
 vim.keymap.set("n", "<leader>fw", telescope_builtin.grep_string, { desc = "Find word under cursor" })
 vim.keymap.set("n", "<leader>fc", telescope_builtin.commands, { desc = "Find commands" })
 vim.keymap.set("n", "<leader>fk", telescope_builtin.keymaps, { desc = "Find keymaps" })
-vim.keymap.set("n", "<leader>fs", telescope_builtin.git_status, { desc = "Git status" })
+vim.keymap.set("n", "<leader>fS", telescope_builtin.lsp_document_symbols, { desc = "Find symbols (file)" })
+vim.keymap.set(
+	"n",
+	"<leader>fs",
+	telescope_builtin.lsp_dynamic_workspace_symbols,
+	{ desc = "Find symbols (workspace)" }
+)
 vim.keymap.set("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "Diagnostics" })
-
--- LSP keymaps (set in on_attach in lsp.lua, but here are some additional ones)
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-vim.keymap.set("n", "gr", telescope_builtin.lsp_references, { desc = "Go to references" })
-vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation" })
-vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-vim.keymap.set("n", "<leader>ds", telescope_builtin.lsp_document_symbols, { desc = "Document symbols" })
-vim.keymap.set("n", "<leader>ws", telescope_builtin.lsp_dynamic_workspace_symbols, { desc = "Workspace symbols" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
