@@ -55,14 +55,13 @@ require("neo-tree").setup({
 	},
 })
 
--- Auto-open Neotree when opening a real file
+-- Auto-open Neotree when opening a real file (not git commits, etc.)
 local neotree_opened = false
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
 	callback = function()
-		local buftype = vim.bo.buftype
-		local filetype = vim.bo.filetype
-		-- Only open for real files, not special buffers like dashboard
-		if buftype == "" and filetype ~= "dashboard" and filetype ~= "" and not neotree_opened then
+		local ft = vim.bo.filetype
+		local dominated = ft == "" or ft == "dashboard" or ft:match("^git")
+		if not neotree_opened and vim.bo.buftype == "" and not dominated then
 			neotree_opened = true
 			vim.cmd("Neotree show")
 		end
