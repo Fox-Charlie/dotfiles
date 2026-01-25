@@ -24,31 +24,24 @@ require("mason-tool-installer").setup({
 
 -- Global LSP defaults (Neovim 0.11+)
 local capabilities = require("blink.cmp").get_lsp_capabilities()
+local fzf = require("fzf-lua")
+
 local on_attach = function(_, bufnr)
     local map = function(mode, lhs, rhs, desc)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
     end
-    local tb = require("telescope.builtin")
-
-    -- Navigation
     map("n", "gd", vim.lsp.buf.definition, "Go to definition")
     map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-    map("n", "gr", tb.lsp_references, "Go to references")
+    map("n", "gr", fzf.lsp_references, "Go to references")
     map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
     map("n", "gt", vim.lsp.buf.type_definition, "Go to type definition")
-
-    -- Info
     map("n", "K", vim.lsp.buf.hover, "Hover documentation")
     map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
-
-    -- Actions
     map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
-
 end
 
--- Apply to all servers (Neovim 0.11+)
-vim.lsp.config('*', {
-    capabilities = capabilities,
-    on_attach = on_attach,
+vim.lsp.config('*', { capabilities = capabilities, on_attach = on_attach })
+vim.lsp.config('basedpyright', {
+    settings = { basedpyright = { analysis = { diagnosticMode = "workspace" } } },
 })

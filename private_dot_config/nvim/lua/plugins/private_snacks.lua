@@ -1,29 +1,4 @@
--- Helper function to open symbol search with LSP check
-local function find_workspace_symbols()
-	-- Check if there are any LSP clients attached
-	local clients = vim.lsp.get_clients()
-	if #clients > 0 then
-		-- LSP is already active, just run the command
-		require("telescope.builtin").lsp_dynamic_workspace_symbols()
-	else
-		-- No LSP active, open a recent file first, then run symbol search
-		vim.notify("Opening workspace to activate LSP...", vim.log.levels.INFO)
-		-- Find a recent file that would have LSP
-		local files = vim.fn.systemlist("find . -type f -name '*.lua' -o -name '*.py' -o -name '*.js' -o -name '*.ts' -o -name '*.rs' 2>/dev/null | head -1")
-		if #files > 0 and files[1] ~= "" then
-			vim.cmd("edit " .. files[1])
-			-- Wait a bit for LSP to attach, then run symbol search
-			vim.defer_fn(function()
-				require("telescope.builtin").lsp_dynamic_workspace_symbols()
-			end, 500)
-		else
-			vim.notify("No project files found. Open a file first.", vim.log.levels.WARN)
-		end
-	end
-end
-
 require("snacks").setup({
-	-- Enable recommended modules
 	bigfile = { enabled = true },
 	notifier = { enabled = true },
 	quickfile = { enabled = true },
@@ -67,16 +42,16 @@ require("snacks").setup({
 ██████  █████████████████████ ████ █████ █████ ████ ██████
             ]],
 			keys = {
-				{ icon = "󰍉 ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+				{ icon = "󰍉 ", key = "f", desc = "Find File", action = ":FzfLua files" },
 				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-				{ icon = "󰊄", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-				{ icon = "󰊕 ", key = "y", desc = "Find Symbol", action = ":lua _G.find_workspace_symbols()" },
-				{ icon = "󰁯 ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+				{ icon = "󰊄", key = "g", desc = "Find Text", action = ":FzfLua live_grep" },
+				{ icon = "󰊕 ", key = "y", desc = "Find Symbol", action = ":FzfLua lsp_live_workspace_symbols" },
+				{ icon = "󰁯 ", key = "r", desc = "Recent Files", action = ":FzfLua oldfiles" },
 				{
 					icon = " ",
 					key = "c",
 					desc = "Config",
-					action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+					action = ":FzfLua files cwd=~/.config/nvim",
 				},
 				{ icon = "󱀸 ", key = "s", desc = "Restore Session", section = "session" },
 				{ icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
@@ -128,5 +103,3 @@ vim.keymap.set("n", "<leader>nh", function()
 	Snacks.notifier.show_history()
 end, { desc = "Notification history" })
 
--- Export symbol search function globally for dashboard use
-_G.find_workspace_symbols = find_workspace_symbols

@@ -64,12 +64,13 @@ require("lazy").setup({
 			end,
 		},
 
-		-- Telescope
+		-- Fuzzy finder
 		{
-			"nvim-telescope/telescope.nvim",
-			dependencies = { "plenary.nvim" },
+			"ibhagwan/fzf-lua",
 			config = function()
-				require("plugins.telescope")
+				require("fzf-lua").setup({
+					lsp = { symbols = { async_or_timeout = 5000 } },
+				})
 			end,
 		},
 

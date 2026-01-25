@@ -1,10 +1,7 @@
 require("lualine").setup({
-  options = {
-    theme = "gruvbox",
-    icons_enabled = true,
-  },
+  options = { theme = "gruvbox" },
   sections = {
-    lualine_c = { "filename", "require'lsp-status'.status()" },
+    lualine_c = { "filename" },
     lualine_x = { "filetype" },
   },
 })

@@ -11,25 +11,20 @@ vim.keymap.set("n", "<leader>sd", function()
 	Snacks.dashboard()
 end, { desc = "Open dashboard" })
 
--- Telescope keymaps
-local telescope_builtin = require("telescope.builtin")
+-- Fuzzy finder keymaps
+local fzf = require("fzf-lua")
 
-vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { desc = "Live grep" })
-vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Find buffers" })
-vim.keymap.set("n", "<leader>fh", telescope_builtin.help_tags, { desc = "Help tags" })
-vim.keymap.set("n", "<leader>fo", telescope_builtin.oldfiles, { desc = "Recent files" })
-vim.keymap.set("n", "<leader>fw", telescope_builtin.grep_string, { desc = "Find word under cursor" })
-vim.keymap.set("n", "<leader>fc", telescope_builtin.commands, { desc = "Find commands" })
-vim.keymap.set("n", "<leader>fk", telescope_builtin.keymaps, { desc = "Find keymaps" })
-vim.keymap.set("n", "<leader>fS", telescope_builtin.lsp_document_symbols, { desc = "Find symbols (file)" })
-vim.keymap.set(
-	"n",
-	"<leader>fs",
-	telescope_builtin.lsp_dynamic_workspace_symbols,
-	{ desc = "Find symbols (workspace)" }
-)
-vim.keymap.set("n", "<leader>fd", telescope_builtin.diagnostics, { desc = "Diagnostics" })
+vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>fh", fzf.help_tags, { desc = "Help tags" })
+vim.keymap.set("n", "<leader>fo", fzf.oldfiles, { desc = "Recent files" })
+vim.keymap.set("n", "<leader>fw", fzf.grep_cword, { desc = "Find word under cursor" })
+vim.keymap.set("n", "<leader>fc", fzf.commands, { desc = "Find commands" })
+vim.keymap.set("n", "<leader>fk", fzf.keymaps, { desc = "Find keymaps" })
+vim.keymap.set("n", "<leader>fS", fzf.lsp_document_symbols, { desc = "Find symbols (file)" })
+vim.keymap.set("n", "<leader>fs", fzf.lsp_live_workspace_symbols, { desc = "Find symbols (workspace)" })
+vim.keymap.set("n", "<leader>fd", fzf.diagnostics_workspace, { desc = "Diagnostics" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
