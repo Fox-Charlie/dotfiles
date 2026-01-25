@@ -41,7 +41,6 @@ require("lazy").setup({
 				require("plugins.ui")
 			end,
 		},
-		{ "windwp/nvim-autopairs", config = true },
 		-- { "folke/which-key.nvim", config = true },
 
 		-- File Management

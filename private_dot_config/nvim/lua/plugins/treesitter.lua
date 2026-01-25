@@ -15,7 +15,7 @@ require("nvim-treesitter.configs").setup({
         "vim",
         "vimdoc",
     },
-    autoinstall = true,
+    auto_install = true,
     highlight = { enable = true },
     indent = { enable = true },
 })

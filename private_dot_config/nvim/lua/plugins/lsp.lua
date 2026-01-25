@@ -7,19 +7,7 @@ require("mason-lspconfig").setup({
 })
 
 require("mason-tool-installer").setup({
-    ensure_installed = {
-        -- Formatters
-        "stylua",
-        "black",
-        "isort",
-        "prettier",
-        "rustfmt",
-        -- Linters
-        "ruff",
-        "eslint_d",
-    },
-    auto_update = false,
-    run_on_start = true,
+    ensure_installed = { "stylua", "prettier", "ruff", "eslint_d" },
 })
 
 -- Global LSP defaults (Neovim 0.11+)

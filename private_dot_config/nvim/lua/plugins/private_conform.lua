@@ -1,9 +1,7 @@
-local conform = require("conform")
-
-conform.setup({
+require("conform").setup({
     formatters_by_ft = {
         lua = { "stylua" },
-        python = { "ruff" },
+        python = { "ruff_format" },
         javascript = { "prettier" },
         typescript = { "prettier" },
         javascriptreact = { "prettier" },
@@ -13,24 +11,7 @@ conform.setup({
         json = { "prettier" },
         yaml = { "prettier" },
         markdown = { "prettier" },
-        rust = { "rustfmt" },
     },
-    default_format_opts = {
-        timeout_ms = 3000,
-        async = false,
-        lsp_format = "fallback",
-    },
-    format_on_save = {
-        timeout_ms = 3000,
-        lsp_format = "fallback",
-    },
+    default_format_opts = { lsp_format = "fallback" },
+    format_on_save = {},
 })
-
--- Keymap to format current buffer
-vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-    conform.format({
-        lsp_format = "fallback",
-        async = false,
-        timeout_ms = 3000,
-    })
-end, { desc = "Format file or range (in visual mode)" })

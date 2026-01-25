@@ -1,5 +1,4 @@
 -- Basic settings
-vim.opt.compatible = false
 vim.opt.showmatch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -20,12 +19,7 @@ vim.opt.number = true
 vim.opt.wildmode = { "longest", "list" }
 vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true
-vim.opt.ttyfast = true
 vim.opt.clipboard = "unnamedplus"
-
--- File type and syntax
-vim.cmd("syntax on")
-vim.cmd("filetype plugin indent on")
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
