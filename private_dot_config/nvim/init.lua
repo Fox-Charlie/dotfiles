@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 -- Basic settings
 vim.opt.showmatch = true
 vim.opt.ignorecase = true

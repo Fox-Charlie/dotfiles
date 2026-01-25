@@ -14,7 +14,7 @@ require("mason-tool-installer").setup({
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 local fzf = require("fzf-lua")
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     local map = function(mode, lhs, rhs, desc)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
     end
@@ -27,6 +27,11 @@ local on_attach = function(_, bufnr)
     map("n", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
     map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
     map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
+
+    -- Enable inlay hints if supported
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
 end
 
 vim.lsp.config('*', { capabilities = capabilities, on_attach = on_attach })

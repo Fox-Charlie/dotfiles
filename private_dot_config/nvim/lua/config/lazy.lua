@@ -26,6 +26,13 @@ require("lazy").setup({
 		"nvim-lua/plenary.nvim",
 		{ "nvim-tree/nvim-web-devicons", lazy = true },
 
+		-- Dev tooling
+		{
+			"folke/lazydev.nvim",
+			ft = "lua",
+			opts = { library = { "lazy.nvim" } },
+		},
+
 		-- UI
 		{
 			"folke/snacks.nvim",
@@ -37,6 +44,7 @@ require("lazy").setup({
 		},
 		{
 			"nvim-lualine/lualine.nvim",
+			event = "VeryLazy",
 			config = function()
 				require("plugins.ui")
 			end,
@@ -48,7 +56,8 @@ require("lazy").setup({
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v3.x",
 			dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", "nvim-tree/nvim-web-devicons" },
-			lazy = false,
+			cmd = "Neotree",
+			event = { "BufReadPost", "BufNewFile" },
 			config = function()
 				require("plugins.neotree")
 			end,
@@ -116,6 +125,7 @@ require("lazy").setup({
 		-- Git
 		{
 			"lewis6991/gitsigns.nvim",
+			event = "BufReadPre",
 			config = function()
 				require("plugins.git")
 			end,
@@ -127,11 +137,12 @@ require("lazy").setup({
 		-- { "ThePrimeagen/harpoon", branch = "harpoon2", config = true },
 		{
 			"echasnovski/mini.nvim",
+			event = "VeryLazy",
 			config = function()
 				require("plugins.mini")
 			end,
 		},
-		{ "folke/trouble.nvim", config = true },
+		{ "folke/trouble.nvim", cmd = "Trouble", config = true },
 		{ "nvim-pack/nvim-spectre", cmd = "Spectre" },
 
 		-- Colorscheme
