@@ -21,6 +21,17 @@ vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true
 vim.opt.clipboard = "unnamedplus"
 
+-- Auto-reload files changed externally (useful for AI coding tools)
+vim.opt.autoread = true
+vim.opt.updatetime = 300
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+	callback = function()
+		if vim.fn.getcmdwintype() == "" then
+			vim.cmd("checktime")
+		end
+	end,
+})
+
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
