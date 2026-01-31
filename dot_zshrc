@@ -121,6 +121,11 @@ alias marta='open -a "Marta"'
 ### coloured man pages
 source ~/.zsh/color_man.zsh
 
+### git aliases
+source ~/.zsh/git_aliases.zsh
+
+alias v='source .venv/bin/activate'
+
 # Set nvim as editor if available, otherwise use vim
 if command -v nvim &> /dev/null; then
   export EDITOR="nvim"
@@ -128,3 +133,5 @@ elif command -v vim &> /dev/null; then
   export EDITOR="vim"
 fi
 
+# Load machine-specific config if it exists
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
