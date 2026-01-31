@@ -53,6 +53,14 @@ require("lazy").setup({
 
 		-- File Management
 		{
+			"stevearc/oil.nvim",
+			opts = {},
+			keys = {
+				{ "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
+				{ "<leader>o", "<cmd>Oil<cr>", desc = "Open Oil" },
+			},
+		},
+		{
 			"nvim-neo-tree/neo-tree.nvim",
 			branch = "v3.x",
 			dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", "nvim-tree/nvim-web-devicons" },
@@ -75,11 +83,7 @@ require("lazy").setup({
 		-- Fuzzy finder
 		{
 			"ibhagwan/fzf-lua",
-			config = function()
-				require("fzf-lua").setup({
-					lsp = { symbols = { async_or_timeout = 5000 } },
-				})
-			end,
+			opts = { lsp = { symbols = { async_or_timeout = 5000 } } }, -- add "skim" to opts for skim fuzzy finder
 		},
 
 		-- LSP / Completion

@@ -3,11 +3,10 @@ require("blink.cmp").setup({
 		preset = "default",
 		["<Tab>"] = { "select_and_accept", "fallback" },
 	},
-	appearance = { nerd_font_variant = "mono" },
 	sources = { default = { "lsp", "path", "snippets", "buffer" } },
 	completion = {
-		menu = { border = "rounded", draw = { treesitter = { "lsp" } } },
-		documentation = { auto_show = true, auto_show_delay_ms = 200, window = { border = "rounded" } },
+		menu = { border = "rounded" },
+		documentation = { auto_show = true, window = { border = "rounded" } },
 	},
 	signature = { enabled = true, window = { border = "rounded" } },
 })
