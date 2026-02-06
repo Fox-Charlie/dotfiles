@@ -21,7 +21,7 @@ vim.opt.number = true
 vim.opt.wildmode = { "longest", "list" }
 vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 
 -- Auto-reload files changed externally (useful for AI coding tools)
 vim.opt.autoread = true

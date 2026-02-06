@@ -3,7 +3,7 @@ require("blink.cmp").setup({
 		preset = "default",
 		["<Tab>"] = { "select_and_accept", "fallback" },
 	},
-	sources = { default = { "lsp", "path", "snippets", "buffer" } },
+	sources = { default = { "lsp", "path", "snippets" } },
 	completion = {
 		menu = { border = "rounded" },
 		documentation = { auto_show = true, window = { border = "rounded" } },

@@ -33,9 +33,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # Rust / Cargo
 . "$HOME/.cargo/env"
 
-# Ruby version manager
-eval "$(rbenv init - zsh)"
-
 # Add `charm` command
 alias charm='open -na "PyCharm CE.app" --args "$@"'
 
