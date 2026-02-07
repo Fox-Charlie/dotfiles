@@ -49,7 +49,6 @@ require("lazy").setup({
 				require("plugins.ui")
 			end,
 		},
-		-- { "folke/which-key.nvim", config = true },
 
 		-- File Management
 		{
@@ -126,6 +125,36 @@ require("lazy").setup({
 			end,
 		},
 
+		-- Debugging
+		{
+			"mfussenegger/nvim-dap",
+			dependencies = {
+				"rcarriga/nvim-dap-ui",
+				"nvim-neotest/nvim-nio",
+				"mfussenegger/nvim-dap-python",
+				"theHamsta/nvim-dap-virtual-text",
+			},
+			keys = {
+				{
+					"<F5>",
+					function()
+						require("dap").continue()
+					end,
+					desc = "Debug: Start/Continue",
+				},
+				{
+					"<leader>db",
+					function()
+						require("dap").toggle_breakpoint()
+					end,
+					desc = "Debug: Toggle Breakpoint",
+				},
+			},
+			config = function()
+				require("plugins.dap")
+			end,
+		},
+
 		-- Git
 		{
 			"lewis6991/gitsigns.nvim",
@@ -138,7 +167,6 @@ require("lazy").setup({
 		-- { "sindrets/diffview.nvim", cmd = { "DiffviewOpen" } },
 
 		-- Misc
-		-- { "ThePrimeagen/harpoon", branch = "harpoon2", config = true },
 		{
 			"echasnovski/mini.nvim",
 			event = "VeryLazy",

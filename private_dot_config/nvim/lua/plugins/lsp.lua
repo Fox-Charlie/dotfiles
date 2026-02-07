@@ -3,7 +3,7 @@ require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "jedi_language_server", "ts_ls", "rust_analyzer", "tflint" },
 })
 require("mason-tool-installer").setup({
-	ensure_installed = { "stylua", "prettier", "ruff", "eslint_d" },
+	ensure_installed = { "stylua", "prettier", "ruff", "eslint_d", "debugpy" },
 })
 
 local fzf = require("fzf-lua")
