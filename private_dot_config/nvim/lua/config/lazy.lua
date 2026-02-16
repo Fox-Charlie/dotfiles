@@ -164,7 +164,18 @@ require("lazy").setup({
 			end,
 		},
 		-- "tpope/vim-fugitive",
-		-- { "sindrets/diffview.nvim", cmd = { "DiffviewOpen" } },
+		{
+			"sindrets/diffview.nvim",
+			cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
+			keys = {
+				{ "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Diffview open" },
+				{ "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", desc = "Diffview file history" },
+				{ "<leader>gc", "<cmd>DiffviewClose<CR>", desc = "Diffview close" },
+			},
+			config = function()
+				require("plugins.diffview")
+			end,
+		},
 
 		-- Misc
 		{
@@ -173,6 +184,11 @@ require("lazy").setup({
 			config = function()
 				require("plugins.mini")
 			end,
+		},
+		{
+			"SmiteshP/nvim-navic",
+			dependencies = { "neovim/nvim-lspconfig" },
+			opts = { lsp = { auto_attach = true }, highlight = true },
 		},
 		{ "folke/trouble.nvim", cmd = "Trouble", config = true },
 		{ "nvim-pack/nvim-spectre", cmd = "Spectre" },
