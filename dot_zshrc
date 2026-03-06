@@ -1,5 +1,18 @@
+zmodload zsh/complist
 autoload -Uz compinit
 compinit
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=** r:|=*'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%F{yellow}-- %d --%f'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect '\e' send-break
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -45,6 +58,7 @@ alias ls='ls -G'
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+
 # --- zsh-vi-mode cursor spec ---------------------------------
 # available styles:  ZVM_CURSOR_BLOCK  ZVM_CURSOR_BEAM  ZVM_CURSOR_UNDERLINE
 # (plus the blinking versions)
@@ -60,6 +74,7 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+AUTOPAIR_BKSPC_WIDGET=backward-delete-char
 source $(brew --prefix)/share/zsh-autopair/autopair.zsh
 
 
