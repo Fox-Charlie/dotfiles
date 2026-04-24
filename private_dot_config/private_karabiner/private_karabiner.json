@@ -1,6 +1,17 @@
 {
     "profiles": [
         {
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "vendor_id": 2007
+                    },
+                    "ignore": false,
+                    "ignore_vendor_events": true
+                }
+            ],
             "name": "Default profile",
             "selected": true,
             "simple_modifications": [

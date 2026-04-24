@@ -14,11 +14,33 @@ end, { desc = "Open dashboard" })
 -- Fuzzy finder keymaps
 local fzf = require("fzf-lua")
 
-vim.keymap.set("n", "<leader>ff", fzf.files, { desc = "Find files" })
-vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live grep" })
+local function project_files(opts)
+	fzf.files(vim.tbl_deep_extend("force", {
+		hidden = true,
+		no_ignore = false,
+		formatter = "path.filename_first",
+	}, opts or {}))
+end
+
+local function project_grep(opts)
+	fzf.live_grep(vim.tbl_deep_extend("force", {
+		hidden = true,
+		no_ignore = false,
+	}, opts or {}))
+end
+
+vim.keymap.set("n", "<leader>ff", project_files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fF", function()
+	project_files({ no_ignore = true })
+end, { desc = "Find files (include ignored)" })
+vim.keymap.set("n", "<leader>fg", project_grep, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>fG", function()
+	project_grep({ no_ignore = true })
+end, { desc = "Live grep (include ignored)" })
 vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Find buffers" })
 vim.keymap.set("n", "<leader>fh", fzf.help_tags, { desc = "Help tags" })
 vim.keymap.set("n", "<leader>fo", fzf.oldfiles, { desc = "Recent files" })
+vim.keymap.set("n", "<leader>fr", fzf.resume, { desc = "Resume last finder" })
 vim.keymap.set("n", "<leader>fw", fzf.grep_cword, { desc = "Find word under cursor" })
 vim.keymap.set("n", "<leader>fc", fzf.commands, { desc = "Find commands" })
 vim.keymap.set("n", "<leader>fk", fzf.keymaps, { desc = "Find keymaps" })

@@ -73,6 +73,8 @@ require("lazy").setup({
 		-- Treesitter
 		{
 			"nvim-treesitter/nvim-treesitter",
+			branch = "main",
+			lazy = false,
 			build = ":TSUpdate",
 			config = function()
 				require("plugins.treesitter")
@@ -110,13 +112,13 @@ require("lazy").setup({
 		},
 
 		-- Formatting & Linting
-		{
-			"stevearc/conform.nvim",
-			event = { "BufReadPre", "BufNewFile" },
-			config = function()
-				require("plugins.conform")
-			end,
-		},
+		-- {
+		-- 	"stevearc/conform.nvim",
+		-- 	event = { "BufReadPre", "BufNewFile" },
+		-- 	config = function()
+		-- 		require("plugins.conform")
+		-- 	end,
+		-- },
 		{
 			"mfussenegger/nvim-lint",
 			event = { "BufReadPre", "BufNewFile" },
@@ -174,6 +176,16 @@ require("lazy").setup({
 			},
 			config = function()
 				require("plugins.diffview")
+			end,
+		},
+
+		-- Markdown
+		{
+			"MeanderingProgrammer/render-markdown.nvim",
+			ft = { "markdown" },
+			dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+			config = function()
+				require("plugins.markdown")
 			end,
 		},
 
