@@ -1,0 +1,74 @@
+theme = "custom"
+mode = "auto"
+vcs = "git"
+line_numbers = true
+
+# Gruvbox Dark — palette from https://github.com/morhetz/gruvbox
+[custom_theme]
+base = "midnight"            # dark base to inherit any unspecified colors from
+label = "Gruvbox Dark"
+
+# Surfaces — the whole UI lives in gruvbox's dark cluster (mirrors how
+# graphite/mocha layer their chrome). Chrome + gutter are the darkest tone;
+# the code content sits one step lighter so it lifts off the panels.
+bg          = "#1d2021"      # bg0_h — main background (whole UI)
+panel       = "#1d2021"      # bg0_h — side/header panels match the base
+panelAlt    = "#282828"      # bg0  — selected / alternate rows
+border      = "#3c3836"      # bg1  — section separators
+
+# Text
+fg          = "#ebdbb2"      # fg1
+muted       = "#928374"      # gray
+lineNumberBg = "#1d2021"     # bg0_h — gutter recedes into the base
+lineNumberFg = "#7c6f64"     # bg4  — dim, distinct gutter numerals
+
+# Accents
+accent      = "#fabd2f"      # bright yellow
+accentMuted = "#504945"      # bg2
+noteBorder  = "#d3869b"      # bright purple
+
+# Diff — added (green) / removed (red), dim washes over the deep base
+addedBg          = "#1f2a1c" # dim green wash
+addedContentBg   = "#27361f"
+addedSignColor   = "#b8bb26" # bright green
+badgeAdded       = "#b8bb26"
+
+removedBg        = "#2d1f1f" # dim red wash
+removedContentBg = "#3a2526"
+removedSignColor = "#fb4934" # bright red
+badgeRemoved     = "#fb4934"
+
+contextBg        = "#1d2021" # gutter-side margin matches the base
+contextContentBg = "#282828" # bg0 — unchanged code lifts one step off chrome
+badgeNeutral     = "#928374"
+
+# File status pills
+fileNew       = "#b8bb26"
+fileModified  = "#fabd2f"
+fileDeleted   = "#fb4934"
+fileRenamed   = "#83a598"
+fileUntracked = "#928374"
+
+# Syntax highlighting (gruvbox bright accents)
+[custom_theme.syntax]
+keyword     = "#fb4934"      # red
+string      = "#b8bb26"      # green
+comment     = "#928374"      # gray
+function    = "#fabd2f"      # yellow
+number      = "#d3869b"      # purple
+variable    = "#ebdbb2"      # fg
+type        = "#fabd2f"      # yellow
+constant    = "#d3869b"      # purple
+operator    = "#8ec07c"      # aqua
+property    = "#83a598"      # blue
+tag         = "#8ec07c"      # aqua
+attribute   = "#fabd2f"      # yellow
+boolean     = "#d3869b"      # purple
+class       = "#fabd2f"      # yellow
+namespace   = "#83a598"      # blue
+parameter   = "#ebdbb2"      # fg
+punctuation = "#ebdbb2"      # fg
+regexp      = "#fe8019"      # orange
+escape      = "#fe8019"      # orange
+heading     = "#fabd2f"      # yellow
+link        = "#83a598"      # blue
