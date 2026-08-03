@@ -1,0 +1,6 @@
+[highlighting]
+# ANSI theme closest to the zsh-syntax-highlighting look: green commands,
+# yellow reserved words, red for unknown commands.
+# Run `zsh-patina list-themes` to preview the alternatives.
+# After changing anything here, run `zsh-patina restart`.
+theme = "classic"

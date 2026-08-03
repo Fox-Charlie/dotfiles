@@ -69,9 +69,17 @@ export ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM      # bar   – insert
 export ZVM_REPLACE_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE # _     – replace
 
 # --- load the plugin ----------------------------------------
+# Init zsh-vi-mode at source time, not at the first precmd, so it can't re-wrap
+# widgets that later plugins already own.
+ZVM_INIT_MODE=sourcing
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Must come *after* the source above: the plugin only fills in its default
+# ignore list if the variable is unset. Keeps autosuggestions off the
+# `user:*zle-*` hook widgets that add-zle-hook-widget creates, which otherwise
+# form a zle-line-pre-redraw -> autosuggest -> zle-line-pre-redraw loop.
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=('user:*zle-*')
+eval "$(/opt/homebrew/bin/zsh-patina activate)"
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 AUTOPAIR_BKSPC_WIDGET=backward-delete-char
