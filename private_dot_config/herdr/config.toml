@@ -1,0 +1,51 @@
+onboarding = false
+[theme]
+name = "gruvbox"
+auto_switch = false
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+# Tight tmux-style splits: shared divider borders, no scrollbar column.
+pane_gaps = false
+pane_scrollbars = false
+
+# Space = project, so name it on creation.
+prompt_new_workspace_name = true
+
+# Agents are grouped under their space, so the workspace token would be
+# redundant here — spend the width on what the agent is actually doing.
+agent_panel_sort = "priority"
+[ui.sidebar.agents]
+# Claude Code writes the current topic into the terminal title, so the title
+# names the agent without manual work. The tab label stays as a dim subtitle
+# for the tabs that are named. state_text is dropped as redundant with
+# state_icon, and the agent kind is dropped while every agent here is claude.
+rows = [
+  ["state_icon", { token = "terminal_title_stripped", bold = true }],
+  [{ token = "tab", dim = true }],
+]
+
+[session]
+# Resume agent panes into their native conversations after a server restart.
+resume_agents_on_restore = true
+
+[experimental]
+# Restore recent pane screen content across full server restarts.
+pane_history = true
+
+# Ghostty speaks the Kitty graphics protocol.
+kitty_graphics = true
+
+[advanced]
+# Per-pane scrollback cap. Default is 10000000 (10 MB).
+scrollback_limit_bytes = 50000000
+
+[ui.toast]
+delivery = "herdr"
+
+[[keys.command]]
+key = "prefix+K"
+type = "plugin_action"
+command = "herdr-bar.open"
+description = "command bar"
