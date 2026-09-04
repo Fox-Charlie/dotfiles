@@ -80,6 +80,11 @@ source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # form a zle-line-pre-redraw -> autosuggest -> zle-line-pre-redraw loop.
 ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=('user:*zle-*')
 eval "$(/opt/homebrew/bin/zsh-patina activate)"
+# zsh-autosuggestions ends each widget with `zle -R`, which repaints before the
+# line-pre-redraw hook runs. Highlight first, so a paste or a history entry is
+# never painted with the previous line's colours.
+functions -c _zsh_autosuggest_highlight_apply _zsh_autosuggest_highlight_apply_orig
+_zsh_autosuggest_highlight_apply() { _zsh_patina; _zsh_autosuggest_highlight_apply_orig }
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 AUTOPAIR_BKSPC_WIDGET=backward-delete-char
