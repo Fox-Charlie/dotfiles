@@ -17,27 +17,9 @@ bindkey -M menuselect '\e' send-break
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-###############################################################################
-# Conda initialization
-###############################################################################
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/charlie/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/charlie/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/charlie/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/charlie/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # Node Version Manager
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -86,13 +68,13 @@ eval "$(/opt/homebrew/bin/zsh-patina activate)"
 functions -c _zsh_autosuggest_highlight_apply _zsh_autosuggest_highlight_apply_orig
 _zsh_autosuggest_highlight_apply() { _zsh_patina; _zsh_autosuggest_highlight_apply_orig }
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
 AUTOPAIR_BKSPC_WIDGET=backward-delete-char
 source $(brew --prefix)/share/zsh-autopair/autopair.zsh
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ###############################################################################
 # Java 11
@@ -157,6 +139,8 @@ if command -v nvim &> /dev/null; then
 elif command -v vim &> /dev/null; then
   export EDITOR="vim"
 fi
+
+eval "$(starship init zsh)"
 
 # Load machine-specific config if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
