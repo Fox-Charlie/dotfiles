@@ -86,7 +86,7 @@ repoPaths: {}
 theme:
     colors:
         background:
-            selected: "#665c54"
+            selected: "239"
     ui:
         sectionsShowCount: true
         table:
