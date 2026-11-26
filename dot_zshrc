@@ -76,11 +76,10 @@ source $(brew --prefix)/share/zsh-autopair/autopair.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-###############################################################################
-# Java 11
-###############################################################################
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-export PATH="$JAVA_HOME/bin:$PATH"
+# Java (default JDK chosen by macOS)
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# uv
 eval "$(uv generate-shell-completion zsh)"
 
 
